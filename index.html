@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circa Lagos | Modern African Luxury</title>
+  <!-- Google Fonts: refined serif + elegant sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="fav.webp" type="image/x-icon">
+</head>
+<body>
+  <!-- HERO SECTION: fullscreen, animated canvas, no background image -->
+  <section id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <nav class="navbar">
+        <div class="logo">
+          <span class="logo-circa">CIRCA</span>
+          <span class="logo-lagos">LAGOS</span>
+        </div>
+        <!-- Mobile menu button (hamburger) -->
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="reservations.html">Reservations</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </nav>
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="title-circa">Circa</span>
+          <span class="title-lagos">Lagos</span>
+        </h1>
+        <p class="hero-subtitle">A culinary archive of Lagos refinement</p>
+        <div class="hero-buttons">
+          <a href="reservations.html" class="btn btn-gold">Reserve</a>
+          <a href="menu.html" class="btn btn-outline">Menu</a>
+        </div>
+      </div>
+      <div class="hero-accent"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION – beige/cream with brown & gold details -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="dropcap">Welcome to Circa Lagos, a contemporary restaurant and bar nestled in the vibrant heart of Lekki Phase 1, Lagos, Nigeria. Established five years ago with a passion for crafting unforgettable culinary experiences, we blend fresh, farm-to-table ingredients with innovative flavors to delight every palate.</p>
+          <p>At Circa Lagos, we pride ourselves on offering a refined yet relaxed atmosphere, perfect for intimate dinners, lively gatherings, or casual outings. Our menu features an array of premium dishes, from succulent seafood like our Seaman’s Pot and Seafood Fradiavolo, to hearty grilled meats such as Ram on Platter, creative pastas including Baked Pasta with chunky beef or spicy chicken, and indulgent desserts. Whether you're starting your day with breakfast or unwinding with signature cocktails at our bar, every bite and sip is designed to create lasting memories.</p>
+        </div>
+        <div class="about-signature">
+          <div class="signature-card">
+            <img src="hero.jpeg" alt="Circa Lagos dining experience" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMBINED MENU + GALLERY CTA – side by side, stack on mobile -->
+  <section id="menu-gallery-cta" class="section cream-bg">
+    <div class="container">
+      <div class="cta-buttons">
+        <a href="menu.html" class="btn btn-darkgreen">View full menu</a>
+        <a href="gallery.html" class="btn btn-darkgreen">View Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION BANNER – rich brown / amber, green accent -->
+  <section id="reservations" class="reserve-banner">
+    <div class="container">
+      <div class="reserve-content">
+        <h3>An intimate archive of taste</h3>
+        <p>Reservations open two months in advance · twelve seats only</p>
+        <a href="reservations.html" class="btn btn-gold btn-large">Secure your table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER – updated address & hours -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-logo">Circa Lagos</span>
+          <p class="footer-address">
+            2 Kola Adeyina Close, Off Jerry Iriabe St<br>
+            Lekki Phase I, Lagos 106104
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/circa_lagos/">Instagram</a></li>
+            <li><a href="reservations.html">Reservations</a></li>
+          </ul>
+        </div>
+        <div class="footer-hours">
+          <h4>Hours</h4>
+          <p>Monday – Sunday: 7:30 am – 11:30 pm</p>
+          <p class="small-note">Private hire available</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Circa Lagos — all rights reserved</span>
+        <span class="green-accent-dot"></span>
+        <span>crafted with patience</span>
+        <span class="green-accent-dot"></span>
+        <span>MADE BY WAHEED DESIRE</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,">
+  <title>Circa Lagos · Menu</title>
+  <!-- Luxury serif + clean sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="fav.webp" type="image/x-icon">
+  <style>
+    /* ---------- ROOT VARIABLES – LUXURIOUS EARTH & GOLD ---------- */
+    :root {
+      --brown-deep: #4a2c1d;
+      --brown-rich: #6b4a3a;
+      --gold: #c6a15b;
+      --amber: #c48a3c;
+      --beige: #faf3e8;
+      --cream: #fffaf4;
+      --warm-yellow: #ebc99c;
+      --light-green: #d7e3d2;
+      --dark-green: #2f4b3c;
+      --dark-green-soft: #3f5e4c;
+      --shadow: rgba(42, 31, 20, 0.06);
+      
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    /* ---------- RESET / GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--brown-deep);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      font-size: 15px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 50px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---------- HEADER – CIRCA LAGOS ---------- */
+    .menu-header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .menu-header h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: var(--brown-deep);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .menu-header h1 span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .menu-header .subhead {
+      font-size: 1.2rem;
+      font-family: var(--font-serif);
+      color: var(--brown-rich);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      display: inline-block;
+      padding: 12px 32px;
+      margin-top: 8px;
+      font-weight: 400;
+      background: rgba(198, 161, 91, 0.04);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+
+    .gold-separator {
+      width: 80px;
+      height: 2px;
+      background: var(--gold);
+      margin: 25px auto 10px;
+    }
+
+    /* ---------- SECTION CATEGORY STYLING ---------- */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 40px 50px;
+      align-items: start;
+    }
+
+    .menu-category {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .category-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--brown-deep);
+      margin-bottom: 18px;
+      position: relative;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--light-green);
+      display: inline-block;
+      letter-spacing: 0.06em;
+    }
+
+    .category-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    /* ----- MENU ITEM LIST ----- */
+    .menu-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0 8px;
+      border-bottom: 1px dashed rgba(198, 161, 91, 0.2);
+      transition: background 0.2s, transform 0.2s;
+      font-size: 1rem;
+    }
+
+    .menu-item:hover {
+      background: rgba(215, 227, 210, 0.2);
+      transform: translateX(6px);
+      border-bottom-color: var(--amber);
+    }
+
+    .item-name {
+      font-weight: 400;
+      color: var(--brown-rich);
+      letter-spacing: 0.01em;
+      max-width: 70%;
+    }
+
+    .item-price {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      color: var(--amber);
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      padding-left: 12px;
+    }
+
+    /* for items with extra description (e.g. chicken/seafood) */
+    .item-variant {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--dark-green-soft);
+      font-style: italic;
+      margin-top: 2px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* ----- SUB-CATEGORY (drinks) ----- */
+    .sub-category {
+      margin: 30px 0 12px 0;
+    }
+
+    .sub-category h4 {
+      font-size: 1.4rem;
+      color: var(--dark-green);
+      font-weight: 600;
+      border-left: 5px solid var(--gold);
+      padding-left: 16px;
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 30px;
+    }
+
+    .drink-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px dotted rgba(196, 138, 60, 0.15);
+      padding: 8px 0;
+    }
+
+    .drink-name {
+      font-size: 0.98rem;
+    }
+
+    /* ---------- SPECIAL TOUCHES ---------- */
+    .price-note {
+      font-family: var(--font-serif);
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-left: 6px;
+    }
+
+    .signature-dish {
+      border-left: 3px solid var(--dark-green);
+      padding-left: 12px;
+    }
+
+    .footer-note {
+      margin-top: 80px;
+      text-align: center;
+      color: var(--brown-rich);
+      border-top: 1px solid var(--warm-yellow);
+      padding-top: 40px;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .footer-note span {
+      color: var(--dark-green);
+      font-weight: 600;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1000px) {
+      .container { padding: 30px 30px; }
+      .menu-header h1 { font-size: 3.5rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 650px) {
+      .container { padding: 20px 20px; }
+      .menu-header h1 { font-size: 2.8rem; }
+      .menu-header .subhead { font-size: 0.9rem; letter-spacing: 0.2em; }
+      .category-title { font-size: 1.8rem; }
+      .drinks-grid { grid-template-columns: 1fr; }
+      .menu-item:hover { transform: translateX(4px); }
+    }
+
+    /* ---------- ANIMATED GOLDEN ACCENT (subtle) ---------- */
+    .animated-accent {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--amber), var(--gold), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 4s infinite linear;
+      margin: 20px 0 10px;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    /* ----- price alignment fix ----- */
+    .item-price {
+      flex-shrink: 0;
+    }
+
+    .small-water {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- HEADER – LUXURY ANIMATED ACCENT (no bg image, pure typography) -->
+    <div class="menu-header">
+      <h1>CIRCA <span>LAGOS</span></h1>
+      <div class="subhead">THE MENU · ARCHIVE OF TASTE</div>
+      <div class="animated-accent"></div>
+    </div>
+
+    <!-- MAIN MENU – GRID OF CATEGORIES -->
+    <div class="menu-grid">
+      
+      <!-- ---------- BREAKFAST ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Breakfast</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">Royal Omelette</span><span class="item-price">₦7,900</span></li>
+          <li class="menu-item"><span class="item-name">Big Africana</span><span class="item-price">₦8,500</span></li>
+          <li class="menu-item"><span class="item-name">Oonje Aaro</span><span class="item-price">₦7,900</span></li>
+          <li class="menu-item"><span class="item-name">Full English Breakfast</span><span class="item-price">₦9,900</span></li>
+          <li class="menu-item"><span class="item-name">Baked Eggs</span><span class="item-price">₦9,400</span></li>
+          <li class="menu-item"><span class="item-name">Pancake</span><span class="item-price">₦5,000</span></li>
+          <li class="menu-item"><span class="item-name">The Cromlet</span><span class="item-price">₦5,900</span></li>
+          <li class="menu-item"><span class="item-name">Seaman’s Pot</span><span class="item-price">₦8,000</span><span class="item-variant">with Bread Rolls</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- SOUPS ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Soups</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">Chicken Corn Soup</span><span class="item-price">₦7,500</span><span class="item-variant">with Bread Rolls</span></li>
+          <li class="menu-item"><span class="item-name">Butternut Squash Soup</span><span class="item-price">₦8,000</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- SALADS ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Salads</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">Grilled Duck Breast · Artisan Salad, Red Mini Grapes, Cherry Vinegar Dressing</span><span class="item-price">₦14,500</span></li>
+          <li class="menu-item"><span class="item-name">Fresh Garden Greek Salad</span><span class="item-price">₦7,500</span></li>
+          <li class="menu-item"><span class="item-name">Circa Chicken Salad</span><span class="item-price">₦9,400</span></li>
+          <li class="menu-item"><span class="item-name">Prawn Avocado Salad</span><span class="item-price">₦11,600</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- PASTA ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Pasta</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">Pesto Pasta (chicken)</span><span class="item-price">₦9,800</span></li>
+          <li class="menu-item"><span class="item-name">Pesto Pasta (seafood)</span><span class="item-price">₦11,900</span></li>
+          <li class="menu-item"><span class="item-name">Penne Alfredo (chicken)</span><span class="item-price">₦9,500</span></li>
+          <li class="menu-item"><span class="item-name">Penne Alfredo (seafood)</span><span class="item-price">₦11,500</span></li>
+          <li class="menu-item"><span class="item-name">Spicy Chicken Pasta Bake</span><span class="item-price">₦9,800</span></li>
+          <li class="menu-item"><span class="item-name">Spicy Seafood Pasta Bake</span><span class="item-price">₦11,900</span></li>
+          <li class="menu-item"><span class="item-name">Chunky Beef Pasta Bake</span><span class="item-price">₦9,800</span></li>
+          <li class="menu-item"><span class="item-name">Seafood Fra Diavolo</span><span class="item-price">₦11,900</span></li>
+          <li class="menu-item"><span class="item-name">Herby Meatball Pasta</span><span class="item-price">₦8,500</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- LITE BITES ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Lite Bites</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">2 Dips and a Crunch</span><span class="item-price">₦6,600</span></li>
+          <li class="menu-item"><span class="item-name">Crispy Calamari & Gold Prawn Nuggets</span><span class="item-price">₦8,000</span></li>
+          <li class="menu-item"><span class="item-name">Homemade Naan with Smoked Chicken</span><span class="item-price">₦8,000</span></li>
+          <li class="menu-item"><span class="item-name">Asun</span><span class="item-price">₦6,500</span></li>
+          <li class="menu-item"><span class="item-name">Escargot</span><span class="item-price">₦6,000</span></li>
+          <li class="menu-item"><span class="item-name">Hummus and Pita Bread</span><span class="item-price">₦6,900</span></li>
+          <li class="menu-item"><span class="item-name">Karaage</span><span class="item-price">₦5,400</span></li>
+          <li class="menu-item"><span class="item-name">Fish Cakes</span><span class="item-price">₦7,500</span></li>
+          <li class="menu-item"><span class="item-name">Spicy Minced Lamb on Lemongrass Skewers</span><span class="item-price">₦7,600</span></li>
+          <li class="menu-item"><span class="item-name">Tacos</span><span class="item-price">₦4,500</span></li>
+          <li class="menu-item"><span class="item-name">Herby Meatball, Focaccia + Vienna Bread</span><span class="item-price">₦5,000</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- BURGERS | SANDWICHES | PIZZA ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Burgers · Sandwiches · Pizza</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">Circa Burger</span><span class="item-price">₦8,500</span></li>
+          <li class="menu-item"><span class="item-name">Duck Burger</span><span class="item-price">₦13,000</span></li>
+          <li class="menu-item"><span class="item-name">Philly Cheese Steak</span><span class="item-price">₦10,900</span></li>
+          <li class="menu-item"><span class="item-name">Beef Burritos</span><span class="item-price">₦9,500</span></li>
+          <li class="menu-item"><span class="item-name">Chicken Quesadilla</span><span class="item-price">₦8,500</span></li>
+          <li class="menu-item"><span class="item-name">The Borough Classic Sandwich</span><span class="item-price">₦8,500</span></li>
+          <li class="menu-item"><span class="item-name">Classic Margherita</span><span class="item-price">₦7,600</span></li>
+          <li class="menu-item"><span class="item-name">Homemade Pepperoni</span><span class="item-price">₦7,600</span></li>
+          <li class="menu-item"><span class="item-name">Tandoori Chicken</span><span class="item-price">₦7,600</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- PLATTERS ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Platters</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">Landlocked Platter</span><span class="item-price">₦29,000</span></li>
+          <li class="menu-item"><span class="item-name">Seafood Platter</span><span class="item-price">₦32,000</span></li>
+          <li class="menu-item"><span class="item-name">Mini Landlocked Platter</span><span class="item-price">₦19,000</span></li>
+          <li class="menu-item"><span class="item-name">Mini Seafood Platter</span><span class="item-price">₦22,000</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- ENTREE ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Entree</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">700g Slow Cooked Tender Beef Ribs · BBQ, Sweet Potato Wedges</span><span class="item-price">₦21,000</span></li>
+          <li class="menu-item"><span class="item-name">Shallow Fried Snapper · Dirty Rice, Slaw, Napoli</span><span class="item-price">₦15,000</span></li>
+          <li class="menu-item"><span class="item-name">Lamb Curry</span><span class="item-price">₦11,300</span></li>
+          <li class="menu-item"><span class="item-name">Crispy Sole and Prawn Curry</span><span class="item-price">₦13,500</span></li>
+          <li class="menu-item"><span class="item-name">360g Sapid Grilled Lambchops · Sautéed Potatoes, Market Veg, Peppercorn</span><span class="item-price">₦14,500</span></li>
+          <li class="menu-item"><span class="item-name">Seashore Grilled Prawns · Market Veg, Garlic Roast Potatoes, Mushroom Sauce</span><span class="item-price">₦15,000</span></li>
+          <li class="menu-item"><span class="item-name">Hearty Oxtail with Sautéed Potatoes</span><span class="item-price">₦16,000</span></li>
+          <li class="menu-item"><span class="item-name">Steak Picanha · Aromatic Mashed Potato, Jus Reduction</span><span class="item-price">₦22,000</span></li>
+          <li class="menu-item"><span class="item-name">Chicken Yassa</span><span class="item-price">₦10,700</span></li>
+          <li class="menu-item"><span class="item-name">Citrus and Garlic Seared Salmon</span><span class="item-price">₦13,900</span></li>
+          <li class="menu-item"><span class="item-name">Mixed Grill</span><span class="item-price">₦16,000</span></li>
+          <li class="menu-item"><span class="item-name">Surf and Turf</span><span class="item-price">₦11,800</span></li>
+          <li class="menu-item"><span class="item-name">Fish and Chips</span><span class="item-price">₦9,000</span></li>
+          <li class="menu-item"><span class="item-name">Cast-Iron Cooked Red Drum Bass</span><span class="item-price">₦14,500</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- VEGAN ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Vegan</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">Sweet Potato Falafel</span><span class="item-price">₦4,900</span></li>
+          <li class="menu-item"><span class="item-name">Chilli Sin Carne</span><span class="item-price">₦5,400</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- DESSERTS ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Desserts</h2>
+        <ul class="menu-list">
+          <li class="menu-item"><span class="item-name">Muffins</span><span class="item-price">₦2,800</span></li>
+          <li class="menu-item"><span class="item-name">Crème Brûlée</span><span class="item-price">₦3,900</span></li>
+          <li class="menu-item"><span class="item-name">Chocolate Lava Cake</span><span class="item-price">₦3,900</span></li>
+          <li class="menu-item"><span class="item-name">I Scream for Sundae</span><span class="item-price">₦3,900</span></li>
+          <li class="menu-item"><span class="item-name">Carrot Cake</span><span class="item-price">₦3,900</span></li>
+          <li class="menu-item"><span class="item-name">Date Sticky Toffee Pudding</span><span class="item-price">₦3,900</span></li>
+        </ul>
+      </div>
+      
+      <!-- ---------- DRINKS (multi‑sub) ---------- -->
+      <div class="menu-category">
+        <h2 class="category-title">Drinks</h2>
+        
+        <!-- Hot Beverages -->
+        <div class="sub-category">
+          <h4>Hot Beverages</h4>
+          <div class="drinks-grid">
+            <div class="drink-item"><span class="drink-name">Tea Pot</span><span class="item-price">₦2,400</span></div>
+            <div class="drink-item"><span class="drink-name">Espresso</span><span class="item-price">₦1,300</span></div>
+            <div class="drink-item"><span class="drink-name">Cappuccino</span><span class="item-price">₦1,100</span></div>
+            <div class="drink-item"><span class="drink-name">Café Latte</span><span class="item-price">₦1,500</span></div>
+            <div class="drink-item"><span class="drink-name">Ace Tea</span><span class="item-price">₦2,100</span></div>
+            <div class="drink-item"><span class="drink-name">Hot Chocolate</span><span class="item-price">₦2,800</span></div>
+            <div class="drink-item"><span class="drink-name">Americano</span><span class="item-price">₦900</span></div>
+            <div class="drink-item"><span class="drink-name">Irish Coffee</span><span class="item-price">₦4,800</span></div>
+            <div class="drink-item"><span class="drink-name">Flat White</span><span class="item-price">₦2,700</span></div>
+          </div>
+        </div>
+        
+        <!-- Soft Drinks -->
+        <div class="sub-category">
+          <h4>Soft Drinks</h4>
+          <div class="drinks-grid">
+            <div class="drink-item"><span class="drink-name">Small Water</span><span class="item-price">₦700</span></div>
+            <div class="drink-item"><span class="drink-name">Bitter Lemon</span><span class="item-price">₦1,400</span></div>
+            <div class="drink-item"><span class="drink-name">Tonic Water</span><span class="item-price">₦2,700</span></div>
+            <div class="drink-item"><span class="drink-name">Coke</span><span class="item-price">₦3,700</span></div>
+            <div class="drink-item"><span class="drink-name">Soda</span><span class="item-price">₦2,700</span></div>
+            <div class="drink-item"><span class="drink-name">Fanta</span><span class="item-price">₦2,700</span></div>
+            <div class="drink-item"><span class="drink-name">Sprite</span><span class="item-price">₦2,700</span></div>
+            <div class="drink-item"><span class="drink-name">Star Radler</span><span class="item-price">₦2,700</span></div>
+          </div>
+        </div>
+        
+        <!-- Beer & Energy -->
+        <div class="sub-category">
+          <h4>Beer & Energy</h4>
+          <div class="drinks-grid">
+            <div class="drink-item"><span class="drink-name">Heineken</span><span class="item-price">₦2,100</span></div>
+            <div class="drink-item"><span class="drink-name">Small Guinness Stout</span><span class="item-price">₦2,800</span></div>
+            <div class="drink-item"><span class="drink-name">Budweiser</span><span class="item-price">₦900</span></div>
+            <div class="drink-item"><span class="drink-name">Orijin</span><span class="item-price">₦4,800</span></div>
+            <div class="drink-item"><span class="drink-name">Red Bull</span><span class="item-price">₦2,700</span></div>
+            <div class="drink-item"><span class="drink-name">Power Horse</span><span class="item-price">₦2,700</span></div>
+          </div>
+        </div>
+        
+        <!-- Juice -->
+        <div class="sub-category">
+          <h4>Juice</h4>
+          <div class="drinks-grid">
+            <div class="drink-item"><span class="drink-name">Juice Glass (plain, passionfruit, caramel, strawberry, vanilla, peach)</span><span class="item-price">₦900</span></div>
+            <div class="drink-item"><span class="drink-name">Juice Pack (strawberry, chocolate, vanilla, caramel)</span><span class="item-price">₦4,800</span></div>
+            <div class="drink-item"><span class="drink-name">Fresh Juice (orange, pineapple, watermelon)</span><span class="item-price">₦2,700</span></div>
+            <div class="drink-item"><span class="drink-name">Cranberry Juice (glass)</span><span class="item-price">₦1,400</span></div>
+            <div class="drink-item"><span class="drink-name">Cranberry Juice (pack)</span><span class="item-price">₦2,700</span></div>
+          </div>
+        </div>
+        
+        <!-- Frappuccino -->
+        <div class="sub-category">
+          <h4>Frappuccino</h4>
+          <div class="drinks-grid">
+            <div class="drink-item"><span class="drink-name">Frappuccino</span><span class="item-price">₦3,700</span></div>
+          </div>
+        </div>
+        
+        <!-- Spirits -->
+        <div class="sub-category">
+          <h4>Spirits</h4>
+          <div class="drinks-grid">
+            <div class="drink-item"><span class="drink-name">Tequila (shot)</span><span class="item-price">₦2,400</span></div>
+            <div class="drink-item"><span class="drink-name">Tequila (bottle)</span><span class="item-price">₦21,300</span></div>
+            <div class="drink-item"><span class="drink-name">Vodka - Absolut (tot)</span><span class="item-price">₦2,800</span></div>
+            <div class="drink-item"><span class="drink-name">Vodka - Absolut (bottle)</span><span class="item-price">₦30,000</span></div>
+            <div class="drink-item"><span class="drink-name">Grey Goose | Belvedere | Ciroc (tot)</span><span class="item-price">₦4,200</span></div>
+            <div class="drink-item"><span class="drink-name">Grey Goose | Belvedere | Ciroc (bottle)</span><span class="item-price">₦30,000</span></div>
+          </div>
+        </div>
+        
+        <!-- Red Wine -->
+        <div class="sub-category">
+          <h4>Red Wine</h4>
+          <div class="drinks-grid">
+            <div class="drink-item"><span class="drink-name">House Red</span><span class="item-price">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- end menu-grid -->
+
+    <!-- subtle closing note -->
+    <div class="footer-note">
+      <span>✦</span> Consciously sourced · Lagos archive <span>✦</span>
+    </div>
+  </div> <!-- end container -->
+
+  <!-- subtle JS animation – floating gold shimmer on header accent -->
+  <script>
+    (function() {
+      "use strict";
+      // Add a gentle, luxury pulse to the gold accent line (already animated via CSS)
+      // additionally, we can add a small interactive effect on menu items – 
+      // already pure CSS, but we inject a small dynamic year for freshness.
+      const footer = document.querySelector('.footer-note');
+      if (footer) {
+        const span = document.createElement('span');
+        span.textContent = ' · MMXXV';
+        span.style.fontWeight = '300';
+        span.style.color = 'var(--amber)';
+        footer.appendChild(span);
+      }
+      
+      // hover sound? no – pure visual. extra animation: very subtle opacity flicker on header
+      const header = document.querySelector('.menu-header h1');
+      if (header) {
+        header.style.transition = 'text-shadow 0.8s ease';
+        setInterval(() => {
+          header.style.textShadow = '2px 2px 4px rgba(198, 161, 91, 0.1)';
+          setTimeout(() => { header.style.textShadow = 'none'; }, 600);
+        }, 3000);
+      }
+    })();
+  </script>
+
+  <!-- no image background, everything is typography, color, delicate animation -->
+</body>
+</html>

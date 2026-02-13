@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,">
+  <title>Circa Lagos · Gallery</title>
+  <!-- luxury fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) for lightbox icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="shortcut icon" href="fav.webp" type="image/x-icon">
+  <style>
+    /* ---------- ROOT VARIABLES – SAME LUXURIOUS PALETTE ---------- */
+    :root {
+      --brown-deep: #4a2c1d;
+      --brown-rich: #6b4a3a;
+      --gold: #c6a15b;
+      --amber: #c48a3c;
+      --beige: #faf3e8;
+      --cream: #fffaf4;
+      --warm-yellow: #ebc99c;
+      --light-green: #d7e3d2;
+      --dark-green: #2f4b3c;
+      --dark-green-soft: #3f5e4c;
+      --shadow: rgba(42, 31, 20, 0.08);
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--brown-deep);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 50px;
+    }
+
+    /* ----- HEADER – CIRCA LAGOS GALLERY ----- */
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .gallery-header h1 {
+      font-family: var(--font-serif);
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: var(--brown-deep);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .gallery-header h1 span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .gallery-header .subhead {
+      font-size: 1.1rem;
+      font-family: var(--font-serif);
+      color: var(--brown-rich);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--light-green);
+      border-bottom: 1px solid var(--light-green);
+      display: inline-block;
+      padding: 10px 28px;
+      font-weight: 400;
+      background: rgba(198, 161, 91, 0.02);
+    }
+
+    /* ----- ANIMATED GOLD ACCENT (shimmer) ----- */
+    .shimmer-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--amber), var(--gold), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 4s infinite linear;
+      margin: 25px 0 10px;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    /* ----- GALLERY GRID – LUXURY MASONRY STYLE ----- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 28px;
+      margin: 50px 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 10px 20px -8px rgba(42, 31, 20, 0.1);
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: 1px solid rgba(198, 161, 91, 0.2);
+      background: var(--beige);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(106, 74, 58, 0.18);
+      border-color: var(--gold);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(74,44,29,0.9) 0%, transparent 100%);
+      color: var(--cream);
+      padding: 25px 20px 16px;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      font-family: var(--font-serif);
+    }
+
+    .gallery-item:hover .overlay {
+      transform: translateY(0);
+    }
+
+    .overlay h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--warm-yellow);
+      margin-bottom: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .overlay p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    /* ----- LIGHTBOX (CUSTOM) ----- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(42, 31, 20, 0.95);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 80%;
+      max-height: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 70vh;
+      border: 2px solid var(--gold);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .lightbox-caption {
+      margin-top: 20px;
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--warm-yellow);
+      letter-spacing: 0.1em;
+      background: rgba(198,161,91,0.1);
+      padding: 12px 30px;
+      border-left: 4px solid var(--amber);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      background: transparent;
+      color: var(--gold);
+      font-size: 2.5rem;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover {
+      color: var(--amber);
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(47, 75, 60, 0.7);
+      color: var(--cream);
+      border: none;
+      font-size: 2.2rem;
+      padding: 12px 18px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 0;
+    }
+
+    .lightbox-prev {
+      left: -60px;
+    }
+
+    .lightbox-next {
+      right: -60px;
+    }
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: var(--dark-green);
+      color: var(--gold);
+    }
+
+    /* ----- FOOTER – SAME ELEGANCE ----- */
+    .gallery-footer {
+      margin-top: 60px;
+      text-align: center;
+      color: var(--brown-rich);
+      border-top: 1px solid var(--light-green);
+      padding-top: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .gallery-footer span {
+      color: var(--dark-green);
+      font-weight: 600;
+    }
+
+    .green-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--dark-green);
+      border-radius: 50%;
+      margin: 0 12px;
+    }
+    
+    .lagos{
+      margin-top: 12px; font-size: 0.75rem; letter-spacing: 0.3em;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 900px) {
+      .container { padding: 30px 30px; }
+      .gallery-header h1 { font-size: 3rem; }
+      .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+      .lightbox-prev { left: -20px; }
+      .lightbox-next { right: -20px; }
+      .lightbox-close { top: -30px; right: -10px; }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-header h1 { font-size: 2.4rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .overlay { transform: translateY(0); background: linear-gradient(to top, rgba(74,44,29,0.85), transparent); }
+      .lightbox-content { max-width: 95%; }
+      .lightbox-prev, .lightbox-next { font-size: 1.6rem; padding: 8px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <div class="gallery-header">
+      <h1>CIRCA <span>LAGOS</span></h1>
+      <div class="subhead">VISUAL ARCHIVE</div>
+      <div class="shimmer-line"></div>
+    </div>
+
+    <!-- GALLERY GRID – 12 LUXURIOUS IMAGES (PLACEHOLDERS WITH UNSPLASH) -->
+    <div class="gallery-grid" id="galleryGrid">
+      
+      <!-- 1. Jollof Rice – Signature -->
+      <div class="gallery-item" data-index="0">
+        <img src="WhatsApp Image 2026-02-11 at 06.58.23 (2).jpeg" alt="plantain Fusion" loading="lazy">
+        <div class="overlay">
+          <h3>Plantain Fusion</h3>
+          <p>Plantain best</p>
+        </div>
+      </div>
+      
+      <!-- 2. Interior – Ikoyi dining room -->
+      <div class="gallery-item" data-index="1">
+        <img src="din.jpeg" alt="Luxury restaurant interior" loading="lazy">
+        <div class="overlay">
+          <h3>The Dining Room</h3>
+          <p>Ikoyi · twelve seats</p>
+        </div>
+      </div>
+      
+      <!-- 3. Grilled Prawns – Seafood -->
+      <div class="gallery-item" data-index="2">
+        <img src="WhatsApp Image 2026-02-11 at 06.58.23 (1).jpeg" alt="Grilled prawns" loading="lazy">
+        <div class="overlay">
+          <h3>Thai Fried Rice</h3>
+          <p>Rice in it's best flavor</p>
+        </div>
+      </div>
+      
+      <!-- 4. Egusi / Caviar – signature luxury -->
+      <div class="gallery-item" data-index="3">
+        <img src="WhatsApp Image 2026-02-11 at 06.58.23.jpeg" alt="Caviar and egg" loading="lazy">
+        <div class="overlay">
+          <h3>The passion Fruit Daiquiri, Gentle Sea</h3>
+          <p>Fruity and refreshing</p>
+        </div>
+      </div>
+      
+      <!-- 5. Suya Wagyu – meat dish -->
+      <div class="gallery-item" data-index="4">
+        <img src="WhatsApp Image 2026-02-11 at 06.53.14.jpeg" alt="Wagyu beef steak" loading="lazy">
+        <div class="overlay">
+          <h3>Grilled meat with Salad</h3>
+          <p>Best meat at perfect temperature</p>
+        </div>
+      </div>
+      
+      <!-- 6. Oxtail – hearty entree -->
+      <div class="gallery-item" data-index="5">
+        <img src="WhatsApp Image 2026-02-11 at 06.53.13 (1).jpeg" alt="Oxtail stew" loading="lazy">
+        <div class="overlay">
+          <h3>Fish and Chips</h3>
+          <p>Fresh fish, crispy chips</p>
+        </div>
+      </div>
+      
+      <!-- 7. Pasta – Herby Meatball -->
+      <div class="gallery-item" data-index="6">
+        <img src="https://images.unsplash.com/photo-1556761223-4c4282c73f77?w=600&h=400&fit=crop&auto=format" alt="Pasta with meatballs" loading="lazy">
+        <div class="overlay">
+          <h3>French Pasta</h3>
+          <p>Pomodoro, basil</p>
+        </div>
+      </div>
+      
+      <!-- 8. Cocktail / Drink – amber glow -->
+      <div class="gallery-item" data-index="7">
+        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=400&fit=crop&auto=format" alt="Luxury cocktail" loading="lazy">
+        <div class="overlay">
+          <h3>Lagos Spritz</h3>
+          <p>Bitter orange, hibiscus</p>
+        </div>
+      </div>
+      
+      <!-- 9. Dessert – Lava Cake -->
+      <div class="gallery-item" data-index="8">
+        <img src="pas.jpeg" alt="Chocolate lava cake" loading="lazy">
+        <div class="overlay">
+          <h3>Beef Pasta Bake</h3>
+          <p>Irish style</p>
+        </div>
+      </div>
+      
+      <!-- 10. Crème Brûlée -->
+      <div class="gallery-item" data-index="9">
+        <img src="snad.jpeg" alt="Creme brulee" loading="lazy">
+        <div class="overlay">
+          <h3>Borough Sandwich</h3>
+          <p>Best For Lunch Break</p>
+        </div>
+      </div>
+      
+      <!-- 11. Platter – seafood -->
+      <div class="gallery-item" data-index="10">
+        <img src="WhatsApp Image 2026-02-11 at 06.53.13 (2).jpeg" alt="Seafood platter" loading="lazy">
+        <div class="overlay">
+          <h3>Flavored meat</h3>
+          <p>meat and vegetable</p>
+        </div>
+      </div>
+      
+      <!-- 12. Chef's table – ambience -->
+      <div class="gallery-item" data-index="11">
+        <img src="out.jpeg" alt="Chef plating" loading="lazy">
+        <div class="overlay">
+          <h3>The External Dicor</h3>
+          <p>Plating · tradition</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+      <div class="lightbox-content">
+        <button id="lightboxClose" class="lightbox-close"><i class="fas fa-times"></i></button>
+        <button id="lightboxPrev" class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+        <img id="lightboxImg" class="lightbox-image" src="" alt="">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+        <button id="lightboxNext" class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="gallery-footer">
+      <span>✦</span> THE VISUAL ARCHIVE · CIRCA LAGOS <span>✦</span>
+      <div class="lagos">Ikoyi · Lagos</div>
+    </div>
+
+  </div> <!-- end container -->
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ---------- LIGHTBOX FUNCTIONALITY ----------
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const closeBtn = document.getElementById('lightboxClose');
+      const prevBtn = document.getElementById('lightboxPrev');
+      const nextBtn = document.getElementById('lightboxNext');
+
+      let currentIndex = 0;
+
+      // data array for captions and image sources
+      const imageData = [
+        { src: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=1200&h=800&fit=crop&auto=format", caption: "Jollof · Dashi – heirloom rice, smoked tomato" },
+        { src: "https://images.unsplash.com/photo-1552566624-52f8a8284819?w=1200&h=800&fit=crop&auto=format", caption: "The Dining Room – Ikoyi, twelve seats" },
+        { src: "https://images.unsplash.com/photo-1625943553852-781c6ab46c03?w=1200&h=800&fit=crop&auto=format", caption: "Seashore Grilled Prawns – market vegetables, garlic roast potatoes" },
+        { src: "https://images.unsplash.com/photo-1589182373726-e4f658ab50a0?w=1200&h=800&fit=crop&auto=format", caption: "Egusi · Oscietra – melon seed consommé, smoked snail, caviar" },
+        { src: "https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=800&fit=crop&auto=format", caption: "Suya · A5 Wagyu – Kano peanut rub, fermented shiso" },
+        { src: "https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=1200&h=800&fit=crop&auto=format", caption: "Hearty Oxtail – sautéed potatoes, jus reduction" },
+        { src: "https://images.unsplash.com/photo-1556761223-4c4282c73f77?w=1200&h=800&fit=crop&auto=format", caption: "Herby Meatball Pasta – pomodoro, basil, parmesan" },
+        { src: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1200&h=800&fit=crop&auto=format", caption: "Lagos Spritz – bitter orange, hibiscus, prosecco" },
+        { src: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1200&h=800&fit=crop&auto=format", caption: "Chocolate Lava Cake – molten centre, vanilla bean ice cream" },
+        { src: "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=1200&h=800&fit=crop&auto=format", caption: "Crème Brûlée – Madagascar vanilla, caramelised sugar" },
+        { src: "https://images.unsplash.com/photo-1604909052743-94e838986d24?w=1200&h=800&fit=crop&auto=format", caption: "Seafood Platter – prawns, calamari, oysters, lemon" },
+        { src: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=1200&h=800&fit=crop&auto=format", caption: "The Archive Kitchen – plating heritage" }
+      ];
+
+      // open lightbox
+      function openLightbox(index) {
+        if (index < 0) index = galleryItems.length - 1;
+        if (index >= galleryItems.length) index = 0;
+        currentIndex = index;
+        
+        lightboxImg.src = imageData[currentIndex].src;
+        lightboxCaption.textContent = imageData[currentIndex].caption;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // prevent scrolling
+      }
+
+      // close lightbox
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // restore scrolling
+      }
+
+      // next image
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        lightboxImg.src = imageData[currentIndex].src;
+        lightboxCaption.textContent = imageData[currentIndex].caption;
+      }
+
+      // prev image
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        lightboxImg.src = imageData[currentIndex].src;
+        lightboxCaption.textContent = imageData[currentIndex].caption;
+      }
+
+      // attach click event to each gallery item
+      galleryItems.forEach((item, idx) => {
+        item.addEventListener('click', () => openLightbox(idx));
+      });
+
+      // event listeners for buttons
+      closeBtn.addEventListener('click', closeLightbox);
+      nextBtn.addEventListener('click', nextImage);
+      prevBtn.addEventListener('click', prevImage);
+
+      // close on click outside image (on overlay)
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // keyboard navigation
+      window.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') {
+          closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+          nextImage();
+        } else if (e.key === 'ArrowLeft') {
+          prevImage();
+        }
+      });
+
+      // ---------- subtle hover enhancement (already in CSS) ----------
+      // preload larger images? not necessary
+
+      // fallback for older touch devices
+    })();
+  </script>
+
+  <!-- image credits are included in the overlay and lightbox captions; all images are from Unsplash free usage. -->
+</body>
+</html>
