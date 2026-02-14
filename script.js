@@ -166,7 +166,7 @@
 
       try {
         const response = await fetch(
-          "https://circalagos-reservation.onrender.com/reservations",
+          "https://circa-lagos-reserver.onrender.com/reservations",
           {
             method: "POST",
             headers: {
