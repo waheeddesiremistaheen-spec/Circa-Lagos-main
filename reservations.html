@@ -404,16 +404,13 @@
         window.location.href = "index.html";
       });
     }
-  </script> 
-    <script>
-      (function() {
+    (function() {
         const msg = sessionStorage.getItem('reservationAlert');
         if (msg) {
           alert(msg);
           sessionStorage.removeItem('reservationAlert');
         }
       })();
-    </script>
-
+  </script> 
 </body>
 </html>
